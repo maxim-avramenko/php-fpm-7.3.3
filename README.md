@@ -5,9 +5,9 @@ Docker image for php-fpm 7.3.3 production and development images, contains commo
 
 [Available extensions for install](https://github.com/php/php-src/blob/PHP-7.3.3/EXTENSIONS)
 
-    docker pull mcsim/php:latest
+    docker pull mcsim/php-fpm-7.3.3:latest
 
 Build command:
 
-    docker build --build-arg TZ=Europe/Moscow --no-cache -t php-fpm:7.3.3 .
+    docker build -t php-fpm-7.3.3:latest .
     
