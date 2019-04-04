@@ -6,6 +6,8 @@ ENV TZ=${TIME_ZONE}
 
 RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
 
+COPY config/php.ini-production ${PHP_INI_DIR}/php.ini
+
 RUN apt-get update \
     && mkdir -p /usr/share/man/man1 \
     && mkdir -p /usr/share/man/man7 \
@@ -63,12 +65,11 @@ RUN apt-get update \
         zip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
+    && pecl config-set php_ini ${PHP_INI_DIR}/php.ini \
     && pecl install redis-4.3.0 \
     && pecl install memcached-3.1.3 \
     && docker-php-ext-enable redis memcached \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-COPY config/php.ini-production ${PHP_INI_DIR}/php.ini
 
 COPY conf.d/opcache.ini ${PHP_INI_DIR}/conf.d/opcache.ini
 

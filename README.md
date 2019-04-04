@@ -7,7 +7,7 @@ Docker image for php-fpm 7.3.3 production and development images, contains commo
 
     docker pull mcsim/php-fpm-7.3.3:latest
 
-Build command:
+Build command example:
 
-    docker build --build-arg TIME_ZONE=Europe/Moscow -t php-fpm-7.3.3:latest .
+    docker build --build-arg TIME_ZONE=Asia/Almaty -t php-fpm-7.3.3:latest .
     
