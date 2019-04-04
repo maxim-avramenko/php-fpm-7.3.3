@@ -1,5 +1,11 @@
 FROM php:7.3.3-fpm-stretch
 
+ARG TIME_ZONE=Europe/Moscow
+
+ENV TZ=${TIME_ZONE}
+
+RUN ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo ${TZ} > /etc/timezone
+
 RUN apt-get update \
     && mkdir -p /usr/share/man/man1 \
     && mkdir -p /usr/share/man/man7 \
@@ -22,6 +28,7 @@ RUN apt-get update \
         libpq-dev \
         nano \
         postgresql-client \
+        tzdata \
         wget \
         zlib1g-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
