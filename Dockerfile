@@ -31,6 +31,7 @@ RUN apt-get update \
         nano \
         postgresql-client \
         tzdata \
+        unzip \
         wget \
         zlib1g-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
